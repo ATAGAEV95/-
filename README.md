@@ -90,9 +90,9 @@ JOIN sistema1.category c ON
 
 ![ДЗ](https://github.com/user-attachments/assets/34381449-c52e-48eb-9a28-bffd77f6ae5f)
 
-В дальнейшем чтобы категоризация была в актуальном состоянии, после вставки и обновления данных в таблицу `category`, в колонке `insert_date` будет зафисированны эти изменения и после 12:00 будет выполняться команда которая всталяет только те данные которые обновились. 
+В дальнейшем чтобы категоризация была в актуальном состоянии, после вставки и обновления данных в таблицу `category`, в колонке `insert_date` будет зафисированны эти изменения и после 12:00 будет выполняться команда которая всталяет в таблицу `sales_advertising` только те данные которые обновились. 
 
-```sq;
+```sql
 INSERT INTO sistema3.sales_advertising
 SELECT sa.sale_date, sa.order_id, sa.product_id, c.category_id, c.product_name,
 	c.category_name, sa.sale_amount, sa.ad_amount
