@@ -59,7 +59,8 @@ JOIN sistema1.category c ON
 	sa.product_id = c.product_id;
 ```
 
-Создаем таблицу `sales_advertising` в который сразу вставляем Витрину Данных. 
+Создаем таблицу `sales_advertising` в который сразу вставляем Витрину Данных.  
+Используем движок `ReplacingMergeTree` и ключи сортировки по трем колонкам, по которым будут заменяться старые дублирующие данные.
 
 ```sql
 CREATE DATABASE sistema3;
@@ -83,7 +84,7 @@ JOIN sistema1.category c ON
 	sa.product_id = c.product_id;
 ```
 
-### Вот так эт выглядит на ER диаграмме.
+### Вот так это выглядит на ER диаграмме.
 
 ![ДЗ](https://github.com/user-attachments/assets/34381449-c52e-48eb-9a28-bffd77f6ae5f)
 
