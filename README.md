@@ -110,7 +110,7 @@ WHERE c.insert_date = yesterday() AND
 	sa.sale_date != yesterday();
 ```
 
-После 15:00, когда таблицы `sales` и `advertising` получили новые данные, будет выполняться запрос который вставит их в таблицу `sales_advertising`.
+После 15:00, когда таблицы `sales` и `advertising` получили новые данные, будет выполняться [запрос](https://github.com/ATAGAEV95/Sales_Advertising/blob/main/insert_sales_advertising.py) который вставит их в таблицу `sales_advertising`.
 
 ```sql
 INSERT INTO sistema3.sales_advertising
