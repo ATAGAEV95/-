@@ -32,14 +32,13 @@ default_args = {
     'depends_on_past': False,
     'retries': 1,
     'retry_delay': 60,
-    'start_date': datetime(2024, 12, 17)
+    'start_date': datetime(2024, 12, 18)
 }
 
 with DAG(
     'category_update',
     default_args=default_args,
-    schedule_interval=None,
-    # schedule_interval='0 13 * * *',
+    schedule_interval='0 13 * * *',
     catchup=True,
     tags=['sales_advertising'],
 ) as dag:

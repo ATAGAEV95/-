@@ -37,8 +37,7 @@ default_args = {
 with DAG(
     'insert_sales_advertising',
     default_args=default_args,
-    schedule_interval=None,
-    # schedule_interval='0 13 * * *',
+    schedule_interval='30 15 * * *',
     catchup=True,
     tags=['sales_advertising'],
 ) as dag:
