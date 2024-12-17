@@ -90,7 +90,7 @@ JOIN sistema1.category c ON
 
 ![ДЗ](https://github.com/user-attachments/assets/34381449-c52e-48eb-9a28-bffd77f6ae5f)
 
-В дальнейшем чтобы категоризация была в актуальном состоянии, после вставки и обновления данных в таблицу `category`, в колонке `insert_date` будет зафисированны эти изменения и после 12:00 будет выполняться запрос который всталяет в таблицу `sales_advertising` только те данные которые обновились. 
+В дальнейшем чтобы категоризация была в актуальном состоянии, после вставки и обновления данных в таблицу `category`, в колонке `insert_date` будет зафисированны эти изменения и после 12:00 будет выполняться [запрос](https://github.com/ATAGAEV95/Sales_Advertising/blob/main/category_update.py) который всталяет в таблицу `sales_advertising` только те данные которые обновились. 
 
 ```sql
 INSERT INTO sistema3.sales_advertising
