@@ -156,3 +156,14 @@ SELECT formatDateTime(sale_date, '%Y-%m') AS year_month,
 FROM sistema3.sales_advertising
 GROUP BY year_month
 ```
+
+Этот запрос вычисляет самоый популярный продукт за заданный период.
+
+```sql
+SELECT product_name, SUM(sale_amount) as total_sale
+FROM sistema3.sales_advertising
+WHERE sale_date BETWEEN '2024-01-01' AND '2024-05-31'
+GROUP BY product_name
+ORDER BY total_sale DESC
+LIMIT 1;
+```
