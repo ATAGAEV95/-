@@ -90,7 +90,7 @@ JOIN sistema1.category c ON
 
 ![ДЗ](https://github.com/user-attachments/assets/34381449-c52e-48eb-9a28-bffd77f6ae5f)
 
-В дальнейшем чтобы категоризация была в актуальном состоянии, после вставки и обновления данных в таблицу `category`, в колонке `insert_date` будет зафисированны эти изменения и после 12:00 будет выполняться [запрос](https://github.com/ATAGAEV95/Sales_Advertising/blob/main/category_update.py) который всталяет в таблицу `sales_advertising` только те данные которые обновились. 
+В дальнейшем, чтобы категоризация была в актуальном состоянии, после вставки и обновления данных в таблицу `category`, в колонке `insert_date` будут зафиксированы эти изменения, и после 12:00 будет выполняться [запрос](https://github.com/ATAGAEV95/Sales_Advertising/blob/main/category_update.py) который всталяет в таблицу `sales_advertising` только те данные, которые обновились. 
 
 ```sql
 INSERT INTO sistema3.sales_advertising
@@ -157,7 +157,7 @@ FROM sistema3.sales_advertising
 GROUP BY year_month
 ```
 
-Этот запрос вычисляет самоый популярный продукт за заданный период.
+Этот запрос вычисляет самый популярный продукт за заданный период.
 
 ```sql
 SELECT product_name, SUM(sale_amount) as total_sale
