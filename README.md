@@ -90,3 +90,22 @@ JOIN sistema1.category c ON
 
 ![ДЗ](https://github.com/user-attachments/assets/34381449-c52e-48eb-9a28-bffd77f6ae5f)
 
+В дальнейшем чтобы категоризация была в актуальном состоянии, после вставки и обновления данных в таблицу `category`, в колонке `insert_date` будет зафисированны эти изменения и после 12:00 будет выполняться команда которая всталяет только те данные которые обновились. 
+
+```sq;
+INSERT INTO sistema3.sales_advertising
+SELECT sa.sale_date, sa.order_id, sa.product_id, c.category_id, c.product_name,
+	c.category_name, sa.sale_amount, sa.ad_amount
+FROM (
+	SELECT  IF(s.sale_date = toDateTime64('1970-01-01', 9), a.ad_date, s.sale_date) AS sale_date, 
+		s.order_id, IF(s.product_id = 0, a.product_id, s.product_id) as product_id,
+		s.sale_amount, a.ad_amount
+	FROM sistema1.sales s 
+	FULL JOIN sistema2.advertising a ON
+		s.sale_date = a.ad_date AND s.product_id = a.product_id
+	ORDER BY sale_date, s.order_id) AS sa
+JOIN sistema1.category c ON
+	sa.product_id = c.product_id
+WHERE c.insert_date = yesterday() AND 
+	sa.sale_date != yesterday();
+```
