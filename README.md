@@ -128,3 +128,20 @@ JOIN sistema1.category c ON
 	sa.product_id = c.product_id
 WHERE sa.sale_date = yesterday();
 ```
+
+### Примеры SQL-запросов обращения к данным со стороны фронта.
+
+Этот запрос рассчитывает прибыль по месяцам, сравнивает её с прибылью предыдущего месяца и вычисляет процентное изменение прибыли.
+
+```sql
+WITH month_profit AS
+	(SELECT formatDateTime(sale_date, '%Y-%m') AS year_month, (SUM(sale_amount) - SUM(ad_amount)) as profit
+	FROM sistema3.sales_advertising
+	GROUP BY year_month)
+SELECT year_month, profit, previous_profit,
+	ROUND((profit - previous_profit) / previous_profit * 100, 2) as profit_percent
+FROM
+	(SELECT year_month, profit,
+		any(profit) OVER(ORDER BY year_month ROWS BETWEEN 1 PRECEDING AND 1 PRECEDING) AS previous_profit
+	FROM month_profit) as month_previous_profit;
+```
