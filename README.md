@@ -58,3 +58,17 @@ FROM (
 JOIN sistema1.category c ON
 	sa.product_id = c.product_id;
 ```
+
+```sql
+CREATE TABLE sistema3.sales_advertising(
+    sale_date Date,
+    order_id UInt64,
+    product_id UInt64,
+    category_id UInt8,
+    product_name String,
+    category_name String,
+    sale_amount UInt64,
+    ad_amount UInt64)
+ENGINE = ReplacingMergeTree
+ORDER BY (sale_date, order_id, product_id);
+```
