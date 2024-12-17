@@ -145,3 +145,14 @@ FROM
 		any(profit) OVER(ORDER BY year_month ROWS BETWEEN 1 PRECEDING AND 1 PRECEDING) AS previous_profit
 	FROM month_profit) as month_previous_profit;
 ```
+
+Этот запрос вычисляет общую выручку, рекламные расходы и прибыль за каждый месяц.
+
+```sql
+SELECT formatDateTime(sale_date, '%Y-%m') AS year_month, 
+	SUM(sale_amount) as total_sale_amount,
+	SUM(ad_amount) as total_ad_amount, 
+	(total_sale_amount - total_ad_amount) as profit
+FROM sistema3.sales_advertising
+GROUP BY year_month
+```
