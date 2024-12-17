@@ -59,6 +59,8 @@ JOIN sistema1.category c ON
 	sa.product_id = c.product_id;
 ```
 
-![ДЗ](https://github.com/user-attachments/assets/0edd7f88-1a1a-4720-9b04-dbf76375e29e)
+![ДЗ](https://github.com/user-attachments/assets/34381449-c52e-48eb-9a28-bffd77f6ae5f)
+
+
 
 
