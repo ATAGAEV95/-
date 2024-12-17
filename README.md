@@ -42,7 +42,7 @@ ORDER BY (ad_date, product_id)
 ALTER TABLE sistema1.category 
 ADD COLUMN insert_date Date DEFAULT now();
 ```
-Создаем Витрину Данных `sales_advertising` где соединяем три таблицы
+Создаем Витрину Данных где соединяем три таблицы
 
 ```sql
 SELECT sa.sale_date, sa.order_id, sa.product_id, c.category_id, c.product_name,
