@@ -8,20 +8,13 @@ def clickhouse_conn():
     client = Client(host='192.168.0.147', user='admin', password='admin', database='sistema3')
     query = """
     INSERT INTO sistema3.sales_advertising
-    SELECT sa.sale_date, sa.order_id, sa.product_id, c.category_id, c.product_name,
-        c.category_name, sa.sale_amount, sa.ad_amount
-    FROM (
-        SELECT  IF(s.sale_date = toDateTime64('1970-01-01', 9), a.ad_date, s.sale_date) AS sale_date, 
-            s.order_id, IF(s.product_id = 0, a.product_id, s.product_id) as product_id,
-            s.sale_amount, a.ad_amount
-        FROM sistema1.sales s 
-        FULL JOIN sistema2.advertising a ON
-            s.sale_date = a.ad_date AND s.product_id = a.product_id
-        ORDER BY sale_date, s.order_id) AS sa
+    SELECT sa.sale_date, sa.order_id, sa.product_id, sa.category_id, 
+        sa.product_name, sa.category_name, sa.sale_amount, sa.ad_amount
+    FROM sistema3.sales_advertising sa
     JOIN sistema1.category c ON
         sa.product_id = c.product_id
-    WHERE c.insert_date = yesterday() AND 
-        sa.sale_date != yesterday();
+    WHERE sa.category_id != c.category_id AND 
+        c.insert_date = yesterday()
     """
     client.execute(query)
     client.disconnect()
