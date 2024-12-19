@@ -94,8 +94,8 @@ JOIN sistema1.category c ON
 
 ```sql
 INSERT INTO sistema3.sales_advertising
-SELECT sa.sale_date, sa.order_id, sa.product_id, sa.category_id, 
-	sa.product_name, sa.category_name, sa.sale_amount, sa.ad_amount
+SELECT sa.sale_date, sa.order_id, sa.product_id, c.category_id, 
+	sa.product_name, c.category_name, sa.sale_amount, sa.ad_amount
 FROM sistema3.sales_advertising sa
 JOIN sistema1.category c ON
 	sa.product_id = c.product_id
