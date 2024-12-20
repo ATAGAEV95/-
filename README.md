@@ -50,7 +50,7 @@ ADD COLUMN insert_date Date DEFAULT now();
 SELECT sa.sale_date, sa.order_id, sa.product_id, c.category_id, c.product_name,
 	c.category_name, sa.sale_amount, sa.ad_amount
 FROM (
-	SELECT  IF(s.sale_date = toDateTime64('1970-01-01', 9), a.ad_date, s.sale_date) AS sale_date, 
+	SELECT  IF(s.sale_date = '1970-01-01', a.ad_date, s.sale_date) AS sale_date, 
 		s.order_id, IF(s.product_id = 0, a.product_id, s.product_id) as product_id,
 		s.sale_amount, a.ad_amount
 	FROM sistema1.sales s 
@@ -75,7 +75,7 @@ AS
 SELECT sa.sale_date, sa.order_id, sa.product_id, c.category_id, c.product_name,
 	c.category_name, sa.sale_amount, sa.ad_amount
 FROM (
-	SELECT  IF(s.sale_date = toDateTime64('1970-01-01', 9), a.ad_date, s.sale_date) AS sale_date, 
+	SELECT  IF(s.sale_date = '1970-01-01', a.ad_date, s.sale_date) AS sale_date, 
 		s.order_id, IF(s.product_id = 0, a.product_id, s.product_id) as product_id,
 		s.sale_amount, a.ad_amount
 	FROM sistema1.sales s 
@@ -110,7 +110,7 @@ INSERT INTO sistema3.sales_advertising
 SELECT sa.sale_date, sa.order_id, sa.product_id, c.category_id, c.product_name,
 	c.category_name, sa.sale_amount, sa.ad_amount
 FROM (
-	SELECT  IF(s.sale_date = toDateTime64('1970-01-01', 9), a.ad_date, s.sale_date) AS sale_date, 
+	SELECT  IF(s.sale_date = '1970-01-01', a.ad_date, s.sale_date) AS sale_date, 
 		s.order_id, IF(s.product_id = 0, a.product_id, s.product_id) as product_id,
 		s.sale_amount, a.ad_amount
 	FROM sistema1.sales s 
